@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hydra-apptainer-launcher"
+version = "0.1.0"
+description = "A Hydra launcher that extends SlurmLauncher to support Apptainer"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "hydra-core>=1.1.0",
+    "hydra-submitit-launcher>=1.2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+namespaces = true
+
+[tool.setuptools.package-data]
+"hydra_plugins.hydra_apptainer_launcher" = ["*"]

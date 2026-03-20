@@ -1,0 +1,22 @@
+Bootstrap: docker
+From: python:3.10-slim
+
+%post
+    apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        && rm -rf /var/lib/apt/lists/*
+
+    pip install --no-cache-dir \
+        hydra-core \
+        hydra-submitit-launcher
+
+    # Install the launcher package (assuming it's in the same directory during build)
+    # Alternatively, you can install it from a git repo:
+    # pip install git+https://github.com/youruser/hydra-apptainer-launcher.git
+
+%environment
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+
+%runscript
+    exec "$@"

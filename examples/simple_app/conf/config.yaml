@@ -1,0 +1,17 @@
+defaults:
+  - override hydra/launcher: apptainer
+
+params:
+  a: 10
+  b: 20
+
+hydra:
+  launcher:
+    # Absolute path to your .sif image on the cluster
+    apptainer_image: "/path/to/your/image.sif"
+    apptainer_args: "--nv"
+    # SLURM parameters
+    timeout_min: 10
+    partition: "debug"
+    mem_gb: 4
+    nodes: 1
